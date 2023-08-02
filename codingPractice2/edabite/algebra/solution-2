@@ -1,0 +1,88 @@
+// Practice------------
+
+
+
+// function sumPolygon(n){
+//   if(n>2){
+//     return (n-2)*180;
+//   }else{
+//     return (n+2)*90;
+//   }
+// }
+
+  
+// console.log(sumPolygon(3), 180)
+// console.log(sumPolygon(4), 360)
+// console.log(sumPolygon(5), 540)
+// console.log(sumPolygon(6), 720)
+// console.log(sumPolygon(7), 900)
+// console.log(sumPolygon(8), 1080)
+// console.log(sumPolygon(9), 1260)
+// console.log(sumPolygon(10), 1440)
+// console.log(sumPolygon(11), 1620)
+// console.log(sumPolygon(12), 1800)
+// console.log(sumPolygon(13), 1980)
+// console.log(sumPolygon(14), 2160)
+// console.log(sumPolygon(15), 2340)
+// console.log(sumPolygon(16), 2520)
+
+
+
+
+
+
+// function nameString(name){
+//   var b = "edabit";
+//   var result = name + b ;
+//   return result;
+// }
+
+// console.log(nameString("Mubashir"), "MubashirEdabit")
+// console.log(nameString("Matt"), "MattEdabit")
+// console.log(nameString("javaScript"), "javaScriptEdabit")
+// console.log(nameString("Airforce"), "AirforceEdabit")
+
+
+
+
+
+
+// function numArgs(...a) {
+
+// // 	// return arguments.length ;
+  
+// }
+
+// console.log(numArgs(), 0)
+// console.log(numArgs('foo'), 1)
+// console.log(numArgs('foo', 'bar'), 2)
+// console.log(numArgs(null, null), 2)
+// console.log(numArgs('foo', 'bar', 5, null), 4)
+// console.log(numArgs(false), 1)
+// console.log(numArgs('foo', {}), 2)
+// console.log(numArgs('foo', 'bar', {}), 3)
+// console.log(numArgs([], [], {}), 3)
+// console.log(numArgs('foo', 'bar', true, null, 0), 5)
+
+
+
+
+
+
+// function invertArray(arr) {
+
+// 	// return arr.map(x=>x?-x:0)
+//   // for(var a = 0; a < arr.length;a++);
+//   // if(arr[a] != 0){
+//   //   arr[a] = -arr[a];
+
+//   // }
+//   // return arr;
+// }
+
+// console.log(invertArray([1, 2, 3, 4, 5]), [-1, -2, -3, -4, -5])
+// console.log(invertArray([1, -2, 3, -4, 5]), [-1, 2, -3, 4, -5])
+// console.log(invertArray([]), [])
+// console.log(invertArray([0]), [0])
+
+

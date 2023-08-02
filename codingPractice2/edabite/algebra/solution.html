@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <pre>
+      const amplify = num =>
+  Array.from({ length: num }, (_, i) => {
+    const num = i + 1;
+    return num % 4 === 0 ? num * 10 : num;
+  });
+Emi Emi35,550 XPFollow
+function amplify(num) {
+	var a = [];
+	for(var i = 1; i <= num; i++){
+		if(i % 4 == 0){
+			a.push(i*10);
+		}else{
+			a.push(i);
+		}
+	}
+	return a;
+}
+function amplify(num) {
+  var a = [];
+  for(var i = 1; i <= num; i++){
+    if(i % 4 == 0){
+      a.push(i*10);
+    }else{
+      a.push(i);
+    }
+  }
+  return a;
+}
+K750i8,255 XPFollow
+function amplify(num) {
+	return Array(num).fill(1)
+		.map((v,i) => v + i)
+		.map(v => v % 4 == 0 ? v * 10 : v)
+}
+function amplify(num) {
+  return Array(num).fill(1)
+    .map((v,i) => v + i)
+    .map(v => v % 4 == 0 ? v * 10 : v)
+}
+Pavel Šrom6,950 XPFollow
+const amplify = (num) => {
+  let result = [];
+  for (let i = 1; i <= num; i++) {
+    result.push(i);
+  }
+  return result.map(x => x % 4 == 0 ? x*10 : x);
+}
+Employee4279,055 XPFollow
+amplify=n=>n==1?[1]:amplify(n-1).concat([n%4?n:n*10])
+amplify=n=>n==1?[1]:amplify(n-1).concat([n%4?n:n*10])
+Dawid Skórewicz250 XPFollow
+function amplify(num) {
+  return [...Array(num).keys()].map( el => {
+    return (el+1) % 4 == 0 ? (el+1) * 10 : el + 1;
+  });
+}
+alebedeff2,080 XPFollow
+function amplify(num) {
+  return Array.from({length:num}, (e,i)=> (i + 1) % 4 === 0 ? (i+1) * 10 : i+1)
+}
+Phaysik2,950 XPFollow
+function amplify(num) {
+  var arr = Array.from({length: num + 1}, (v, i) => i)
+  arr.shift()
+  return arr.map(x => x % 4 == 0 ? x * 10 : x)
+}
+Yonny8,560 XPFollow
+function amplify(num) {
+  let arr = [];
+  for (let i = 1; i<= num; i++){
+    if(i%4===0){
+      arr.push(i*10);
+    }else{
+      arr.push(i);
+    }
+  }
+  return arr;
+}
+LanderVanlaer700 XPFollow
+const amplify = n => n ? [...amplify(n - 1), n % 4 ? n : n * 10] : [];
+const amplify = n => n ? [...amplify(n - 1), n % 4 ? n : n * 10] : [];
+scr2em2,365 XPFollow
+function amplify(num) {
+  return [...Array(num+1).keys()].slice(1).map(x=> x%4? x:x*10)
+}
+xAlien9549,245 XPFollow
+const amplify = n => [...Array(n)].map((_,i) => ++i * 10 ** !(i % 4))
+Rational Exuberance 1,215 XPFollow
+function amplify(num) {
+	const allNums = [];
+	
+	for(let i=1; i<=num; i++) {
+		allNums.push(i);
+	}
+	return allNums.map(num => num%4===0 ? num*10 : num)
+}
+function amplify(num) {
+  const allNums = [];
+  
+  for(let i=1; i<=num; i++) {
+    allNums.push(i);
+  }
+  return allNums.map(num => num%4===0 ? num*10 : num)
+}
+Niklas1,070 XPFollow
+const amplify = n =>
+  Array(n).fill(0).map((_, i) => ++i % 4 ? i : i * 10);
+sh0knah200 XPFollow
+function amplify(num) {
+  var arr = new Array();
+  for (i = 1; i <= num; i++) {
+    arr.push((i % 4) == 0 ? i * 10 : i);
+  }
+  return arr;
+}
+g-madden1,030 XPFollow
+function amplify(num) {
+  let res = []
+  for(let i=1;i<=num;i++) {
+    if((i % 4) == 0) 
+      res = [...res, i*10];
+    else 
+      res = [...res, i];
+  }
+  return res;
+}
+JordanJo1,540 XPFollow
+function amplify(num) {
+  return Array.from({length: num}, (val, i) => ++i % 4 == 0 ? i * 10: i);
+}
+Joel Pettersson110 XPFollow
+function amplify(num) {
+  let numArray = [];
+  for (let i = 1; i <= num; i++) {
+    if (i % 4 === 0) {
+      numArray.push(i * 10);
+    } else {
+      numArray.push(i);
+    }
+  }
+  return numArray;
+}
+WilliamVDavis135 XPFollow
+function amplify(num) {
+  var newArr = [];
+  for (var i = 1;i <= num; i++)
+  if (i % 4 == 0){
+     newArr.push(i * 10);
+  } else {
+    newArr.push(i);
+  }
+  return newArr;
+}
+pshaw201,525 XPFollow
+function amplify(num) {
+  let arr = []
+  while(num > 0) {
+    arr.unshift(num);
+    num--
+  }
+  return arr.map(x => x % 4 == 0 ? x * 10 : x)
+}
+nikolaimakaveli3,870 XPFollow
+function amplify(num) {
+  let result = [];
+  let newNum = num.toString();
+  console.log(newNum);
+  for (let i = 1; i <= num; i++) {
+  if (i % 4 === 0) {
+    result.push(10 * i)
+  } else {
+    result.push(i);
+  }
+}
+console.log(result)
+return result;
+}
+jivinjules380 XPFollow
+function amplify(num) {
+let arr = []
+while (num >=1) {
+  if (num%4 === 0) {
+  arr.push(num*10)
+   } else {arr.push(num)}
+  num = num -1
+} return arr.reverse()
+}
+Harith2,640 XPFollow
+function amplify(num) {
+  return Array(num).fill().map((e,i)=>i+1).map(x => x % 4 == 0 ? x * 10 : x);
+}
+Rafok11,591 XPFollow
+function amplify(num) {
+  return [...Array(num).keys()].map(v => (v+1) % 4 == 0 ? (v+1) * 10 : v + 1)
+}
+Feraz7,710 XPFollowCOPY TO CODE TAB
+function amplify(num) {
+  let a =[];
+  for (i=1; i<=num; i++){
+    if(i % 4 ===0){
+      a.push(i*10);
+    }
+    else{
+      a.push(i);
+    }
+  }
+  return a;
+}
+    </pre>
+  </div>
+</body>
+</html>
