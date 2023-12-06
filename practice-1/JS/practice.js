@@ -33,3 +33,7 @@ let abc = arr.map((a)=>{
     console.log(i);
  }
 
+const json  = '{"name":"Js","year":1995}';
+const data = JSON.parse(json);
+
+console.log(data.name);
