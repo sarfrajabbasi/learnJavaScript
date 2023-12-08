@@ -8,3 +8,7 @@ return child
 
 var newFunc = parent();//child
 console.log(parent());
+
+
+const express = require("express");
+console.log(express());
