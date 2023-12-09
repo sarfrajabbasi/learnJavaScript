@@ -30,6 +30,7 @@ server.get(
   }
 );
 
+
 // req. params
 server.get("/:name", (req, res) => {
   const name = req.params.name;
@@ -48,6 +49,10 @@ server.get("/:name/:age/:country", (req, res) => {
   };
   res.send({ data, message: "" });
 });
+
+server.post('/login',(req,res)=>{
+  
+})
 
 server.listen(8080, () => {
   console.log("hello");
