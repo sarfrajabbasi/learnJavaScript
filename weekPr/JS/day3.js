@@ -562,13 +562,24 @@ console.log(carsNeeded(0), 0);
 
 // 59 ==> ES6: Destructuring Arrays IV
 // //     There is an easy way to assign to array values to the nth index by using the Rest element.
-// var [head, tail] = [1, 2, 3, 4];
-// console.log(head); // outputs  1
-// console.log(tail); // outputs 2
-// //     But how could I make tail = [2, 3, 4] instead of tail = 2?
 
-// // 60 ==> ES6: Destructuring Arrays III
-// //     You can assign variables from arrays with destructuring like this:
-// const arr = ["eyes", "nose", "lips", "ears"];
-// let [eyes, nose, lips, ears] = arr;
-// //     But you can also skip over items in the array being destructured. (takeout only lips)
+var [head,tail] = [1, 2, 3, 4];
+console.log(head); // outputs  1
+console.log(tail); // outputs 2
+
+// But how could I make tail = [2, 3, 4] instead of tail = 2?
+var [head, ...tail] = [1, 2, 3, 4];
+console.log(tail); // outputs [2, 3, 4]
+
+// 60 ==> ES6: Destructuring Arrays III
+//You can assign variables from arrays with destructuring like this:
+
+const arr = ["eyes", "nose", "lips", "ears"];
+let [eyes, nose, lips, ears] = arr;
+
+//But you can also skip over items in the array being destructured. (takeout only lips)
+ [,,lips,] = arr;
+ console.log(lips);
+
+
+ 
