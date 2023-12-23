@@ -150,6 +150,7 @@ console.log(frames(10, 25), 15000);
 function shouldServeDrinks(age, breakTime) {
   return 18 <= age && !breakTime;
 }
+
 console.log(shouldServeDrinks(17, true), false);
 console.log(shouldServeDrinks(19, false), true);
 console.log(shouldServeDrinks(30, true), false);
@@ -219,6 +220,8 @@ console.log(stringInt("12"));
 // 30 ==> Divides Evenly
 //     Given two integers, a and b, return true if a can be divided evenly by b. Return false otherwise.
 function dividesEvenly(a, b) {
+  const result = a/b;
+  return result === parseInt(result)
   return a % b === 0;
 }
 console.log(dividesEvenly(98, 7));
