@@ -297,18 +297,19 @@ console.log(newWord("plum"));
 
 function concat(intArr1, intArr2) {
   // in javascript all the ways that can concat two arrays
-  // const newIntArr = [...intArr1,...intArr2];
-  // const newIntArr = intArr1.concat(intArr2);
-  // const newIntArr = Array.from(intArr1).concat(intArr2);
-  //  intArr1.push(...intArr2);
-  // for(let i=0;i<intArr2.length;i++){
-  //   intArr1.push(intArr2[i])
-  // }
-  // Array.prototype.push.apply(intArr1,intArr2)
-  // Array.prototype.splice.apply(intArr1,[intArr1.length,0].concat(intArr2));
+  var newIntArr = [...intArr1, ...intArr2];
+  var newIntArr = intArr1.concat(intArr2);
+  var newIntArr = Array.from(intArr1).concat(intArr2);
+  intArr1.push(...intArr2);
+  for (let i = 0; i < intArr2.length; i++) {
+    intArr1.push(intArr2[i]);
+  }
+  Array.prototype.push.apply(intArr1, intArr2);
+  Array.prototype.splice.apply(intArr1, [intArr1.length, 0].concat(intArr2));
   Array.prototype.unshift.apply(intArr1, intArr2);
-  // return newIntArr
+
   return intArr1;
+  return newIntArr;
 }
 console.log(concat([1, 3, 5], [2, 6, 8]));
 console.log(concat([7, 8], [10, 9, 1, 1, 2]));
@@ -407,33 +408,54 @@ function hasSpaces(myString) {
 
     return containsSpace;
   }
-
+  containsSpace = myString.indexOf(" ") !== -1;
   containsSpace = myString.includes(" ");
+  containsSpace = myString.split(" ").length > 1;
+  containsSpace = /\s/.test(myString);
 
-  // containsSpace = myString.indexOf(" ") !== -1;
-
-  return useForOfLoop();
-  // return containsSpace;
+  // return useForOfLoop();
+  return containsSpace;
 }
-console.log(hasSpaces("hello"));
-console.log(hasSpaces("hello, world"));
-console.log(hasSpaces(" "));
-console.log(hasSpaces(""));
-console.log(hasSpaces(",./!@#"));
+console.log("hasSpace:-", hasSpaces("hello"));
+console.log("hasSpace:-", hasSpaces("hello, world"));
+console.log("hasSpace:-", hasSpaces(" "));
+console.log("hasSpace:-", hasSpaces(""));
+console.log("hasSpace:-", hasSpaces(",./!@#"));
 
 // 52 ==> Find the Bug: Returning the Container
 //     The packaging system is running wild! The candy is lying loose all over in the warehouse, the cereal is missing, and bread is stuffed in a bottle. What is going on here? The candy should be in plastic and the bread should be in a bag. The packaging machine is running the getContainer() function to retrieve the container of a product. But something is not right...
-function getContainer() {}
+function getContainer(product) {
+  let container;
+  switch (product) {
+    case "Candy":
+      container = "Plastic";
+      break;
+    case "Bread":
+      container = "bag";
+      break;
+    case "Beer":
+      container = "bottle";
+      break;
+    default:
+      container = null;
+  }
+  return container;
+}
 console.log(getContainer("Bread"), "bag");
 console.log(getContainer("Beer"), "bottle");
 console.log(getContainer("Candy"), "plastic");
 console.log(getContainer("Cheese"), null);
+
 // 53 ==> Return the Total Number of Parameters
 //     Create a function that returns the total number of parameters passed in.
-function numberArgs() {}
+function numberArgs(...args) {
+  // In JavaScript, there are several ways to find the total number of parameters passed to a function
+  return args.length;
+  return arguments.length;
+}
 console.log(numberArgs("a", "b", "c"), 3);
 console.log(numberArgs(10, 20, 30, 40, 50), 5);
-console.log(numberArgs(x, y), 2);
+console.log(numberArgs("x", "y"), 2);
 console.log(numberArgs(), 0);
 // 54 ==>  Extract City Facts
 //     Create a function that takes an object as an argument and returns a string with facts about the city. The city facts will need to be extracted from the object's three properties:
@@ -443,7 +465,17 @@ console.log(numberArgs(), 0);
 //         The string should have the following format:
 //     "X has a population of Y and is situated in Z"
 //     (where X is the city name, Y is the population and Z is the continent the city is situated in).
-function cityFacts() {}
+function cityFacts({ name, population, continent }) {
+  const format = `"${name} has a population of ${population} and is situated in ${continent}`;
+  // return format
+
+  // Optional Chaining
+}
+function cityFacts(city) {
+  // Optional Chaining
+  const format = `"${city?.name} has a population of ${city?.population} and is situated in ${city?.continent}`;
+  return format;
+}
 console.log(
   cityFacts({
     name: "Paris",
@@ -467,33 +499,67 @@ console.log(
   }),
   "Tokyo has a population of 13,929,286"
 );
+
 // 55 ==> Volume of a Box
 //     Create a function that takes an object argument sizes (contains width, length, height keys) and returns the volume of the box.
-function volumeOfBox() {}
+
+function volumeOfBox({ width, length, height }) {
+  const boxVolume = length * width * height;
+  return boxVolume;
+}
 console.log(volumeOfBox({ width: 2, length: 5, height: 1 }), 10);
 console.log(volumeOfBox({ width: 4, length: 2, height: 2 }), 16);
 console.log(volumeOfBox({ width: 2, length: 3, height: 5 }), 30);
-//     Volume is length * width * height.
+
+//Volume is length * width * height.
+
 // 56 ==> Stuttering Function
 //     Write a function that stutters a word as if someone is struggling to read it. The first two letters are repeated twice with an ellipsis ... and space after each, and then the word is pronounced with a question mark ?.
-function stutter() {}
+
+function stutter(word) {
+  if (typeof word !== "string" || word.length < 2) {
+    return "Invalid input";
+  } else {
+    const firstTwoLetter = word.substring(0, 2);
+    let stutteredWord = `${firstTwoLetter}... ${firstTwoLetter}... ${word}?`;
+    stutteredWord = `${firstTwoLetter}... `;
+    return stutteredWord.repeat(2) + word + "?";
+
+    return stutteredWord;
+  }
+}
 console.log(stutter("incredible"), "in... in... incredible?");
 console.log(stutter("enthusiastic"), "en... en... enthusiastic?");
 console.log(stutter("outstanding"), "ou... ou... outstanding?");
+console.log(stutter("o"), "Invalid input");
 // 57 ==> Is the Word Singular or Plural?
 //     Create a function that takes in a word and determines whether or not it is plural. A plural word is one that ends in "s".
-function isPlural() {}
+function isPlural(word) {
+  let pluralOrNot = word[word.length - 1] === "s";
+  pluralOrNot = word.endsWith("s");
+  pluralOrNot = word.substring(word.length - 1) === "s";
+  pluralOrNot = /s$/.test(word);
+  return pluralOrNot;
+}
 console.log(isPlural("changes"), true);
 console.log(isPlural("change"), false);
 console.log(isPlural("dudes"), true);
 console.log(isPlural("magic"), false);
-//         This is an oversimplification of the English language. We are ignoring edge cases like "goose" and "geese", "fungus" and "fungi", etc.
+
+//This is an oversimplification of the English language. We are ignoring edge cases like "goose" and "geese", "fungus" and "fungi", etc.
+
 // 58 ==> Four Passengers and a Driver
-//     A typical car can hold 4 passengers and 1 driver, overall allowing 5 people to travel around. Given n number of people, return how many cars are needed to seat everyone comfortably.
-function carsNeeded() {}
+// A typical car can hold 4 passengers and 1 driver, overall allowing 5 people to travel around. Given n number of people, return how many cars are needed to seat everyone comfortably.
+function carsNeeded(people) {
+  const passengersPerCar = 4;
+  const driverPerCar = 1;
+  const carNeeded = Math.ceil(people / (driverPerCar + passengersPerCar));
+  return carNeeded;
+}
 console.log(carsNeeded(5), 1);
 console.log(carsNeeded(11), 3);
 console.log(carsNeeded(0), 0);
+
 // 59 ==> ES6: Destructuring Arrays IV
 // //     There is an easy way to assign to array values to the nth index by using the Rest element.
 // var [head, tail] = [1, 2, 3, 4];
