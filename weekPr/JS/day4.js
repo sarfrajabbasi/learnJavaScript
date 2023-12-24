@@ -325,8 +325,8 @@ console.log(squaresSum(13), 819);
 
 //   81 ==> Check if Number is within a Given Range
 //  Given a number and an object with min and max properties, return true if the number lies within the given range (inclusive).
-function isInRange(num,obj){
-    return  num >= obj.min && num <= obj.max
+function isInRange(num, obj) {
+  return num >= obj.min && num <= obj.max;
 }
 console.log(isInRange(4, { min: 0, max: 5 }), true);
 console.log(isInRange(4, { min: 4, max: 5 }), true);
@@ -338,13 +338,30 @@ console.log(isInRange(5, { min: 5, max: 5 }), true);
 // 82 ==> Coding Website Score Calculator
 //  Imagine you run a website that presents users with different coding challenges in levels Easy, Medium, and Hard, where users get points for completing challenges. An Easy challenge is worth 5 points, a Medium challenge is worth 10 points, and a Hard challenge is worth 20 points. Create a function that takes in the number of each challenge level a user has played and calculates the user's total number of points. Keep in mind that a user cannot complete negative challenges, so the function should return the string "invalid" if any of the passed parameters are negative.
 
-function scoreCalculator() {}
+function scoreCalculator(easy, medium, hard) {
+  if (easy < 0 || medium < 0 || hard < 0) {
+    return "invlaid";
+  }
+  const userPoints = easy * 5 + medium * 10 + hard * 20;
+  return userPoints;
+}
 console.log(scoreCalculator(1, 2, 3), 85);
 console.log(scoreCalculator(1, 0, 10), 205);
 console.log(scoreCalculator(5, 2, -6), "invalid");
 
 // 83 ==>   Sum of the Odd Numbers
 //  Create a function which returns the total of all odd numbers up to and including n. n will be given as an odd number.
+function addOddToN(oddNum) {
+  let totalOddNum = 0;
+  for (let i = 1; i <= oddNum; i += 2) {
+    if (i % 2 === 0) {
+      continue;
+    } else {
+      totalOddNum += i;
+    }
+  }
+  return totalOddNum;
+}
 console.log(addOddToN(5), 9);
 //      // 1 + 3 + 5 = 9
 console.log(addOddToN(13), 49);
@@ -352,6 +369,13 @@ console.log(addOddToN(47), 576);
 
 // 84 ==>   Halloween Day
 //  Create a function that takes date in the format yyyy/mm/dd as an input and returns "Bonfire toffee" if the date is October 31, else return "toffee".
+function halloween(date) {
+  const dates = date.split("/");
+  return Number(dates[dates.length - 1]) === 31 &&
+    Number(dates[dates.length - 2]) === 10
+    ? "Bonfire toffee"
+    : "toffee";
+}
 console.log(halloween("2013/10/31"), "Bonfire toffee");
 console.log(halloween("2012/07/31"), "toffee");
 console.log(halloween("2011/10/12"), "toffee");
@@ -361,6 +385,20 @@ console.log(halloween("2011/10/12"), "toffee");
 //      Subtract two numbers.
 //      Multiply two numbers.
 //      Divide two numbers.
+class Calculator {
+  add(num1, num2) {
+    return num1 + num2;
+  }
+  subtract(num1, num2) {
+    return num1 - num2;
+  }
+  multiply(num1, num2) {
+    return num1 * num2;
+  }
+  divide(num1, num2) {
+    return num1 / num2;
+  }
+}
 var calculator = new Calculator();
 console.log(calculator.add(10, 5), 15);
 console.log(calculator.subtract(10, 5), 5);
@@ -372,6 +410,11 @@ console.log(calculator.divide(10, 5), 2);
 //      If the number falls within the range, the number should be returned.
 //      If the number is less than the lower limit of the range, the lower limit should be returned.
 //      If the number is greater than the upper limit of the range, the upper limit should be returned.
+function limitNumber(num, min, max) {
+  const numberReturn = Math.max(num, min);
+  const numReturn = Math.min(numberReturn, max);
+  return numReturn;
+}
 console.log(limitNumber(5, 1, 10), 5);
 console.log(limitNumber(-3, 1, 10), 1);
 console.log(limitNumber(14, 1, 10), 10);
@@ -382,7 +425,14 @@ console.log(limitNumber(4.6, 1, 10), 4.6);
 //  Drinks that contain too much sugar (in this challenge) are:
 //      Cola
 //      Fanta
-console.log(skipTooMuchSugarDrinks(["fanta", "cola", "water"]), [water]);
+function skipTooMuchSugarDrinks(arr) {
+  const highSugerDrink = ["cola", "fanta"];
+
+  const noSugerDrink = arr.filter((drink) => !highSugerDrink.includes(drink));
+
+  return noSugerDrink;
+}
+console.log(skipTooMuchSugarDrinks(["fanta", "cola", "water"]), ["water"]);
 console.log(skipTooMuchSugarDrinks(["fanta", "cola"]), []);
 console.log(skipTooMuchSugarDrinks(["lemonade", "beer", "water"]), [
   "lemonade",
@@ -392,6 +442,14 @@ console.log(skipTooMuchSugarDrinks(["lemonade", "beer", "water"]), [
 
 // 88 ==>   Add a Consecutive List of Numbers
 //  Write a function that takes the last number of a consecutive list of numbers and returns the total of all numbers up to and including it.
+function addUpTo(num) {
+  let totalNum = 0;
+  for (let i = 1; i <= num; i++) {
+    totalNum += i;
+  }
+
+  return totalNum;
+}
 console.log(addUpTo(3), 6);
 //      // 1 + 2 + 3 = 6
 console.log(addUpTo(10), 55);
@@ -401,6 +459,10 @@ console.log(addUpTo(7), 28);
 
 // 89 ==>   Check if String Ending Matches Second String
 //  Create a function that takes two strings and returns true if the first string ends with the second string; otherwise return false.
+function checkEnding(str1, str2) {
+  return str1.slice(-str2.length) === str2;
+  return str1.endsWith(str2);
+}
 console.log(checkEnding("abc", "bc"), true);
 console.log(checkEnding("abc", "d"), false);
 console.log(checkEnding("samurai", "zi"), false);
@@ -411,7 +473,7 @@ console.log(checkEnding("convention", "tio"), false);
 //  Create a function that takes in an array and returns true if all its values are even, and false otherwise.
 //  Not a big deal, your friend says. He writes the following code:
 function checkAllEven(arr) {
-  return arr.every(x % 2 === 0);
+  return arr.every((x) => x % 2 === 0);
 }
 //  The code above leads to a Reference Error, with x being undefined. Fix the code above so that all tests pass:
 console.log(checkAllEven([1, 2, 3, 4]), false);
@@ -421,6 +483,10 @@ console.log(checkAllEven([-2, 2, -2, 2]), true);
 
 // 91 ==>   Remove Null from an Array
 //  Create a function to remove all null values from an array.
+function removeNull(arr) {
+  const newArr = arr.filter((e) => e !== null);
+  return newArr;
+}
 console.log(removeNull(["a", null, "b", null]), ["a", "b"]);
 console.log(removeNull([null, null, null, null, null]), []);
 console.log(removeNull([7, 8, null, 9]), [7, 8, 9]);
@@ -428,18 +494,32 @@ console.log(removeNull([7, 8, null, 9]), [7, 8, 9]);
 // 92 ==>   True Ones, False Zeros
 //  Create a function that returns an array of booleans from a given number by iterating through the number one digit at a time and appending true into the array if the digit is 1 and false otherwise.
 
+function integerBoolean(binary) {
+  const booleanArr = binary.split("");
+  const newArr = booleanArr.map((e) => Boolean(Number(e)));
+  return newArr;
+}
 console.log(integerBoolean("100101"), [true, false, false, true, false, true]);
 console.log(integerBoolean("10"), [true, false]);
 console.log(integerBoolean("001"), [false, false, true]);
 
 // 93 ==>   Modifying the Last Character
 //  Create a function which makes the last character of a string repeat n number of times.
+function modifyLast(str, repeat) {
+  const repeatlast =
+    str.slice(0, str.length - 1) + str[str.length - 1].repeat(repeat);
+  return repeatlast;
+}
 console.log(modifyLast("Hello", 3), "Hellooo");
 console.log(modifyLast("hey", 6), "heyyyyyy");
 console.log(modifyLast("excuse me what?", 5), "excuse me what?????");
 
 // 94 ==>   Where is Bob!?!
 //  Write a function that searches an array of names (unsorted) for the name "Bob" and returns the location in the array. If Bob is not in the array, return -1.
+function findBob(nameArr) {
+  let searchBob = nameArr.findIndex((e) => e === "Bob");
+  return searchBob;
+}
 console.log(findBob(["Jimmy", "Layla", "Bob"]), 2);
 console.log(findBob(["Bob", "Layla", "Kaitlyn", "Patricia"]), 0);
 console.log(findBob(["Jimmy", "Layla", "James"]), -1);
@@ -448,18 +528,30 @@ console.log(findBob(["Jimmy", "Layla", "James"]), -1);
 //  Given an array of numbers, negate all elements contained within.
 //      Negating a positive value -+n will return -n, because all +'s are removed.
 //      Negating a negative value --n will return n, because the first - turns the second minus into a +.
+function negate(arr) {
+  const negateArr = arr.map((e) => e * -1);
+  return negateArr;
+}
 console.log(negate([1, 2, 3, 4]), [-1, -2, -3, -4]);
 console.log(negate([-1, 2, -3, 4]), [1, -2, 3, -4]);
 console.log(negate([]), []);
 
 // 96 ==>   Convert Number to String of Dashes
 //  Create a function that takes a number (from 1 - 60) and returns a corresponding string of hyphens.
+function Go(num) {
+  const hypen = "-";
+  return hypen.repeat(num);
+}
 console.log(Go(1), "-");
 console.log(Go(5), "-----");
 console.log(Go(3), "---");
 
 // 97 ==>   Word Endings
 //  Create a function that adds a string ending to each member in an array.
+function addEnding(arr, endingStr) {
+  const newArr = arr.map((e) => e + endingStr);
+  return newArr;
+}
 console.log(addEnding(["clever", "meek", "hurried", "nice"], "ly"), [
   "cleverly",
   "meekly",
@@ -479,6 +571,13 @@ console.log(addEnding(["bend", "sharpen", "mean"], "ing"), [
 
 // 98 ==>   Flip the Boolean
 //  Create a function that reverses a boolean value and returns the string "boolean expected" if another variable type is given.
+
+function reverse(BooleanVal){
+  if(typeof BooleanVal !== 'boolean'){
+    return 'boolean expected'
+  }
+  return !BooleanVal
+}
 console.log(reverse(true), false);
 console.log(reverse(false), true);
 console.log(reverse(0), "boolean expected");
@@ -532,9 +631,9 @@ console.log(missingAngle(45, 45), "right");
 //      The third number is the patch (bug fixes).
 //  Write three separate functions, one to retrieve each element in the semantic versioning specification.
 //      // 6.1.9
-console.log(retrieveMajor("6.1.9"), "6")
-console.log(retrieveMinor("6.1.9"), "1")
-console.log(retrievePatch("6.1.9"), "9")
+console.log(retrieveMajor("6.1.9"), "6");
+console.log(retrieveMinor("6.1.9"), "1");
+console.log(retrievePatch("6.1.9"), "9");
 
 // 2.1.0
 console.log(retrieveMajor("2.1.0"), "2");
@@ -543,8 +642,8 @@ console.log(retrievePatch("2.1.0"), "0");
 
 // 104 ==>  Alphabet Soup
 //  Create a function that takes a string and returns a string with its letters in alphabetical order.
-     console.log(AlphabetSoup("hello") , "ehllo")
-     console.log(AlphabetSoup("edabit") , "abdeit")
-     console.log(AlphabetSoup("hacker") , "acehkr")
-     console.log(AlphabetSoup("geek") , "eegk")
-     console.log(AlphabetSoup("javascript") , "aacijprstv")
+console.log(AlphabetSoup("hello"), "ehllo");
+console.log(AlphabetSoup("edabit"), "abdeit");
+console.log(AlphabetSoup("hacker"), "acehkr");
+console.log(AlphabetSoup("geek"), "eegk");
+console.log(AlphabetSoup("javascript"), "aacijprstv");
