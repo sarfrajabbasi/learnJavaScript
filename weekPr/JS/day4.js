@@ -572,11 +572,11 @@ console.log(addEnding(["bend", "sharpen", "mean"], "ing"), [
 // 98 ==>   Flip the Boolean
 //  Create a function that reverses a boolean value and returns the string "boolean expected" if another variable type is given.
 
-function reverse(BooleanVal){
-  if(typeof BooleanVal !== 'boolean'){
-    return 'boolean expected'
+function reverse(BooleanVal) {
+  if (typeof BooleanVal !== "boolean") {
+    return "boolean expected";
   }
-  return !BooleanVal
+  return !BooleanVal;
 }
 console.log(reverse(true), false);
 console.log(reverse(false), true);
@@ -585,17 +585,27 @@ console.log(reverse(null), "boolean expected");
 
 // 99 ==>   Return the Four Letter Strings
 //  Create a function that takes an array of strings and returns the words that are exactly four letters.
+function isFourLetters(str_arr) {
+  const four_letters_arr = str_arr.filter((e) => e.length === 4);
+  return four_letters_arr;
+}
 console.log(isFourLetters(["Tomato", "Potato", "Pair"]), ["Pair"]);
 console.log(isFourLetters(["Kangaroo", "Bear", "Fox"]), ["Bear"]);
-console.log(isFourLetters(["Ryan", "Kieran", "Jason", "Matt"]))[
-  ("Ryan", "Matt")
-];
+console.log(isFourLetters(["Ryan", "Kieran", "Jason", "Matt"]), [
+  "Ryan",
+  "Matt",
+]);
 
 // 100 ==>  Shuffle the Name
 //  Create a function that accepts a string (of a person's first and last name) and returns a string with the first and last name swapped.
-console.log(nameShuffle("Donald Trump"), "Trump Donald");
-console.log(nameShuffle("Rosie O'Donnell"), "O'Donnell Rosie");
-console.log(nameShuffle("Seymour Butts"), "Butts Seymour");
+function nameShuffle(nameStr) {
+  const nameArr = nameStr.split(" ");
+  const swapped = nameArr.reverse().join(" ");
+  return swapped;
+}
+console.log(nameShuffle("Donald Trump"), "-->", "Trump Donald");
+console.log(nameShuffle("Rosie O'Donnell"), "-->", "O'Donnell Rosie");
+console.log(nameShuffle("Seymour Butts"), "-->", "Butts Seymour");
 
 // 101 ==>  Video Streaming Plans
 //  Given a class for a BasicPlan, write the classes for StandardPlan and PremiumPlan which have class properties of the following:
@@ -607,11 +617,45 @@ console.log(nameShuffle("Seymour Butts"), "Butts Seymour");
 //                                  ✓               hasUHD
 //      1           2               4               numOfDevices
 //      $8.99       $12.99          $15.99          price
-//      BasicPlan.hasSD , true
-//      PremiumPlan.hasSD , true
-//      BasicPlan.hasUHD , false
-//      BasicPlan.price , '$8.99'
-//      PremiumPlan.numOfDevices , 4
+class BasicPlan {
+  constructor() {
+    this.canStream = true;
+    this.canDownload = true;
+    this.hasSD = true;
+    this.hasUHD = false;
+    this.hasHD = false;
+    this.numOfDevices = 1;
+    this.price = "$8.99";
+  }
+}
+
+class StandardPlan extends BasicPlan {
+  constructor() {
+    super();
+    this.hasHD = true;
+    this.numOfDevices = 2;
+    this.price = "$12.99";
+  }
+}
+
+class PremiumPlan extends StandardPlan {
+  constructor() {
+    super();
+    this.hasHD = true;
+    this.hasUHD = true;
+    this.numOfDevices = 4;
+    this.price = "$15.99";
+  }
+}
+const basicPlan = new BasicPlan();
+const standardPlan = new StandardPlan();
+const premiumPlan = new PremiumPlan();
+
+console.log(basicPlan.hasSD, true);
+console.log(premiumPlan.hasSD, true);
+console.log(basicPlan.hasUHD, false);
+console.log(basicPlan.price, "$8.99");
+console.log(premiumPlan.numOfDevices, 4);
 
 // 102 ==>  Missing Third Angle
 //  You are given 2 out of 3 angles in a triangle, in degrees.
@@ -620,6 +664,16 @@ console.log(nameShuffle("Seymour Butts"), "Butts Seymour");
 //      A right angle is exactly 90 degrees.
 //      An obtuse angle is greater than 90 degrees (but less than 180 degrees).
 //  For example: missingAngle(11, 20) should return "obtuse", since the missing angle would be 149 degrees, which makes it obtuse.
+function missingAngle(deg1, deg2) {
+  const angleValue = 180 - (deg1 + deg2);
+  if (angleValue < 90) {
+    return "acute";
+  } else if (angleValue > 90) {
+    return "obtuse";
+  } else {
+    return "right";
+  }
+}
 console.log(missingAngle(27, 59), "obtuse");
 console.log(missingAngle(135, 11), "acute");
 console.log(missingAngle(45, 45), "right");
@@ -631,6 +685,29 @@ console.log(missingAngle(45, 45), "right");
 //      The third number is the patch (bug fixes).
 //  Write three separate functions, one to retrieve each element in the semantic versioning specification.
 //      // 6.1.9
+
+function retrieveMajor(version) {
+  if (typeof version != "string") {
+    return "Invalid Input";
+  }
+  const MajorVersion = version.split(".")[0];
+  return MajorVersion;
+}
+function retrieveMinor(version) {
+  if (typeof version != "string") {
+    return "Invalid Input";
+  }
+  const MinorVersion = version.split(".")[1];
+  return MinorVersion;
+}
+function retrievePatch(version) {
+  if (typeof version != "string") {
+    return "Invalid Input";
+  }
+  const PatchVersion = version.split(".")[2];
+  return PatchVersion;
+}
+
 console.log(retrieveMajor("6.1.9"), "6");
 console.log(retrieveMinor("6.1.9"), "1");
 console.log(retrievePatch("6.1.9"), "9");
@@ -642,8 +719,14 @@ console.log(retrievePatch("2.1.0"), "0");
 
 // 104 ==>  Alphabet Soup
 //  Create a function that takes a string and returns a string with its letters in alphabetical order.
-console.log(AlphabetSoup("hello"), "ehllo");
-console.log(AlphabetSoup("edabit"), "abdeit");
-console.log(AlphabetSoup("hacker"), "acehkr");
-console.log(AlphabetSoup("geek"), "eegk");
-console.log(AlphabetSoup("javascript"), "aacijprstv");
+function alphabetSoup(word){
+  let alphabeticalOrder = word.split('').toSorted().join('');
+  alphabeticalOrder = [...word].sort().join('');
+  alphabeticalOrder = Array.from(word).sort().join('');
+  return alphabeticalOrder;
+}
+console.log(alphabetSoup("hello"), "ehllo");
+console.log(alphabetSoup("edabit"), "abdeit");
+console.log(alphabetSoup("hacker"), "acehkr");
+console.log(alphabetSoup("geek"), "eegk");
+console.log(alphabetSoup("javascript"), "aacijprstv");
