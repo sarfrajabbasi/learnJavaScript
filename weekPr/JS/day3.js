@@ -218,8 +218,8 @@ console.log(remainder(5, 5), 0);
 // 41 ==> Fix the Error: Check Whether a Given Number Is Odd
 //     I've written the function isOdd() to check if a given number is odd or not. Unfortunately, the function does not return the correct result for all the inputs. Fix the error.
 
-function isOdd(inputs) {
-  const result = inputs % 2 !== 0;
+function isOdd(num) {
+  const result = !!num;
   return result;
 }
 
@@ -231,14 +231,10 @@ console.log(isOdd(0));
 //     Due to a programming concept known as truthiness, certain values can be evaluated to (i.e. take the place of) booleans. For example, 1 (or any number other than 0) is often equivalent to true, and 0 is often equivalent to false.
 //     Create a function that returns the opposite of the given boolean, as a number.
 
-function flipBaloon(boo) {
-  let result;
-  if (typeof boo === "boolean") {
-    result = Number(boo);
-  } else {
-    result = Boolean(boo);
-  }
-  return result;
+function flipBaloon(number) {
+  let reverseBoolean = !number;
+  const finalresult = +reverseBoolean;
+  return finalresult;
 }
 console.log(flipBaloon(true));
 console.log(flipBaloon(false));
@@ -250,7 +246,7 @@ console.log(flipBaloon(0));
 //     Kinetic energy = (0.5) * m * v^2
 
 function kineticEnergy(m, v) {
-  const kineticEngy = 0.5 * m * v ** 2;
+  const kineticEngy = parseInt(0.5 * m * v ** 2);
   return kineticEngy;
 }
 console.log(kineticEnergy(60, 3));
@@ -292,14 +288,15 @@ function newWord(word) {
 console.log(newWord("apple"));
 console.log(newWord("cherry"));
 console.log(newWord("plum"));
+
 // 47 ==> Concatenating Two Integer Arrays
 //     Create a function to concatenate two integer arrays.
 
 function concat(intArr1, intArr2) {
   // in javascript all the ways that can concat two arrays
-  var newIntArr = [...intArr1, ...intArr2];
-  var newIntArr = intArr1.concat(intArr2);
-  var newIntArr = Array.from(intArr1).concat(intArr2);
+  let newIntArr = [...intArr1, ...intArr2];
+  newIntArr = intArr1.concat(intArr2);
+  newIntArr = Array.from(intArr1).concat(intArr2);
   intArr1.push(...intArr2);
   for (let i = 0; i < intArr2.length; i++) {
     intArr1.push(intArr2[i]);
@@ -319,9 +316,9 @@ console.log(concat([4, 5, 1], [3, 3, 3, 3, 3]));
 //     Create a function that finds the index of a given item. If the item is not present, return -1.
 function search(arr, item) {
   // in javascript all the ways that can find  the index of element
-  // const indexOfItem = arr.indexOf(item);
-  // const indexOfItem = arr.lastIndexOf(item);
-  // const indexOfItem = arr.findIndex((e) => e === item);
+  let indexOfItem = arr.indexOf(item);
+  indexOfItem = arr.lastIndexOf(item);
+  indexOfItem = arr.findIndex((e) => e === item);
   let index = -1;
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === item) {
@@ -341,7 +338,7 @@ console.log(search(["hi", "edabit", "fgh", "abc"], "fgh"));
 //     Given an n * n * n Rubik's cube, return the number of individual stickers that are needed to cover the whole cube. Keep in mind there are 6 faces to keep track of.
 
 function howManyStickers(Cube) {
-  const numStickers = 6 * Cube ** 2;
+  const numStickers = 6 * (2 ** Cube);
   return numStickers;
 }
 console.log(howManyStickers(1));
@@ -563,7 +560,7 @@ console.log(carsNeeded(0), 0);
 // 59 ==> ES6: Destructuring Arrays IV
 // //     There is an easy way to assign to array values to the nth index by using the Rest element.
 
-var [head,tail] = [1, 2, 3, 4];
+var [head, tail] = [1, 2, 3, 4];
 console.log(head); // outputs  1
 console.log(tail); // outputs 2
 
@@ -578,8 +575,5 @@ const arr = ["eyes", "nose", "lips", "ears"];
 let [eyes, nose, lips, ears] = arr;
 
 //But you can also skip over items in the array being destructured. (takeout only lips)
- [,,lips,] = arr;
- console.log(lips);
-
-
- 
+[, , lips] = arr;
+console.log(lips);
