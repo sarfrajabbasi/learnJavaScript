@@ -54,9 +54,9 @@ body{
 }
 @keyframes animee {
     0%{
-        transform: translateZ(100vh) scale(1);
+        transform: translateY(100vh) scale(1);
     }
     100%{
-        transform: translateZ(-10vh) scale(0);
+        transform: translateX(-10vh) scale(0);
     }
 }
