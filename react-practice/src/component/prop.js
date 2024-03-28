@@ -12,7 +12,6 @@ const MyName = (props)=> {
 };
 
 // props in class
-
 export class Hola extends Component{
     render(){
         return (

@@ -48,7 +48,7 @@ console.log(superReducedString("baab")); // Output: "Empty String"
 
 /* 
 
-Q1.) There is a sequence of words in CamelCase as a string of letters, , having the following properties:
+Q2.) There is a sequence of words in CamelCase as a string of letters, , having the following properties:
 
 It is a concatenation of one or more words consisting of English letters.
 All letters in the first word are lowercase.
@@ -63,6 +63,10 @@ Sample Output: 5
 */
 
 // Function Definition:
+/**
+ * @param {string | string[]} s
+ */
+
 function camelcase(s) {
   // Initializing Variables:
   let wordCount = 1;
