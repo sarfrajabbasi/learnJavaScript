@@ -2,7 +2,7 @@ import React ,{Component} from 'react'
 
 
 const MyName = (props)=> {
-    console.log(props);
+    // console.log(props);
     return (
         <div>
             <h1>Hello {props.name}</h1>
