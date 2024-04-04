@@ -1,6 +1,9 @@
 import './App.css';
+import UserGreeting from './component/ConditionalRendering';
+import ParentComponent from './component/MethodsAsProps';
 import EventBind from './component/eventHanderBind';
 import ClickMeClass  from './component/eventhandling';
+import NameList from './component/listRandering';
 // import Welcome from './component/classComponent';
 // import Greetings from './component/funcComponent';
 // import {Hello} from './component/JSXme'
@@ -26,10 +29,13 @@ function App() {
      </MyName>
      <Hola name="goldy"></Hola>
      <Message name ="sarfraj" ></Message> */}
-     <Counter></Counter>
+     {/* <Counter></Counter> */}
      {/* <ClickMe></ClickMe> */}
-     <ClickMeClass></ClickMeClass>
-     <EventBind></EventBind>
+     {/* <ClickMeClass></ClickMeClass> */}
+     {/* <EventBind></EventBind> */}
+     {/* <ParentComponent></ParentComponent> */}
+     <UserGreeting></UserGreeting>
+     <NameList></NameList>
     </div>
   );
 }
