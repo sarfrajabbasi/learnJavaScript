@@ -3,6 +3,7 @@ import UserGreeting from './component/ConditionalRendering';
 import ParentComponent from './component/MethodsAsProps';
 import EventBind from './component/eventHanderBind';
 import ClickMeClass  from './component/eventhandling';
+import MyList from './component/indexAsKey';
 import NameList from './component/listRandering';
 // import Welcome from './component/classComponent';
 // import Greetings from './component/funcComponent';
@@ -34,8 +35,9 @@ function App() {
      {/* <ClickMeClass></ClickMeClass> */}
      {/* <EventBind></EventBind> */}
      {/* <ParentComponent></ParentComponent> */}
-     <UserGreeting></UserGreeting>
-     <NameList></NameList>
+     {/* <UserGreeting></UserGreeting> */}
+     {/* <NameList></NameList> */}
+     <MyList></MyList>
     </div>
   );
 }
